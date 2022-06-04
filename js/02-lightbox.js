@@ -1,6 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-
 // console.log(galleryItems);
 
 const imagesEl = galleryItems.map((option) => {
@@ -37,11 +36,22 @@ function onImagesContainerElClick(evt) {
     .getAttribute("href");
   console.log(bigImageSrc);
 
-  const instance = basicLightbox.create(
-    `
-  <img src='${bigImageSrc}' width="1400" height="900">
-`
-  );
+  let SimpleLightBoxGallery = new SimpleLightbox("a.gallery__item", {
+    captionsData: "alt",
+    captionDelay: 250,
+  });
 
-  instance.show();
+  document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+      isEscape = evt.key === "Escape" || evt.key === "Esc";
+    } else {
+      isEscape = evt.keyCode === 27;
+    }
+    if (isEscape && shown.simplelightbox) {
+      instance.close();
+      document.removeEventListener("keydown", (e) => {});
+    }
+  };
 }

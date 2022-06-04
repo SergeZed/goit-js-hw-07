@@ -38,11 +38,11 @@ function onImagesContainerElClick(evt) {
 
   const imageLink = evt.target.closest(".gallery__link");
 
-  console.log(evt.target);
-  console.log(evt.target.src);
+  // console.log(evt.target);
+  // console.log(evt.target.src);
 
   const bigImageSrc = evt.target.getAttribute("data-source");
-  console.log(bigImageSrc);
+  // console.log(bigImageSrc);
 
   const instance = basicLightbox.create(
     `
@@ -80,6 +80,7 @@ function onImagesContainerElClick(evt) {
     }
     if (isEscape && instance.visible) {
       instance.close();
+      document.removeEventListener("keydown", (evt) => {});
     }
   };
 }
