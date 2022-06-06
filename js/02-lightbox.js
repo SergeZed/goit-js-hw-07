@@ -49,9 +49,9 @@ function onImagesContainerElClick(evt) {
     } else {
       isEscape = evt.keyCode === 27;
     }
-    if (isEscape && shown.simplelightbox) {
-      instance.close();
-      document.removeEventListener("keydown", (e) => {});
-    }
+    // if (isEscape && shown.simplelightbox) {
+    //   instance.close();
+    //   document.removeEventListener("keydown", (e) => {});
+    // }
   };
 }
